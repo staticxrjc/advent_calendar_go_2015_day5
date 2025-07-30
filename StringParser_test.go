@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestNiceStrings(t *testing.T) {
 	tests := []struct {
@@ -10,13 +12,33 @@ func TestNiceStrings(t *testing.T) {
 	}{
 		{
 			name:  "ugknbfddgicrmopn is nice",
-			input: "ugknbfddgicrmopn ",
+			input: "ugknbfddgicrmopn",
 			want:  true,
+		},
+		{
+			name:  "aaa is nice",
+			input: "aaa",
+			want:  true,
+		},
+		{
+			name:  "jchzalrnumimnmhp is not nice",
+			input: "jchzalrnumimnmhp",
+			want:  false,
+		},
+		{
+			name:  "haegwjzuvuyypxyu is not nice",
+			input: "haegwjzuvuyypxyu",
+			want:  false,
+		},
+		{
+			name:  "dvszwmarrgswjxmb is not nice",
+			input: "dvszwmarrgswjxmb",
+			want:  false,
 		},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			s := StringParser{}
+			s := NewStringParser()
 			got := s.IsNice(test.input)
 
 			if got != test.want {
